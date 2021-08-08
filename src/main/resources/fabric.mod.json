@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "id": "piglessportals",
+  "version": "${version}",
+
+  "name": "Pigless Portals",
+  "description": "Gets rid of pigman portal spawning.",
+  "authors": [
+    "IAmTheSneak"
+  ],
+  "contact": {
+    "homepage": "",
+    "sources": ""
+  },
+
+  "license": "CC0-1.0",
+  "icon": "assets/piglessportals/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.gmail.sneakdevs.PiglessPortals"
+    ]
+  },
+  "mixins": [
+    "piglessportals.mixins.json"
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.11.3",
+    "fabric": "*",
+    "java": ">=16"
+  }
+}
