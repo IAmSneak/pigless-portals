@@ -9,20 +9,18 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnReason;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.random.Random;
 import net.minecraft.world.GameRules;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Overwrite;
-
-import java.util.Random;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(NetherPortalBlock.class)
-public class PiglessPortalsMixin {
+public class NetherPortalBlockMixin {
 
-    /**
-     * @author
-     */
-    @Overwrite
-    public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
+    @Inject(method = "randomTick", at = @At("HEAD"))
+    public void piglessportals_randomTickMixin(BlockState state, ServerWorld world, BlockPos pos, Random random, CallbackInfo ci) {
         if (world.getGameRules().getBoolean(PiglessPortals.PIGMEN_SPAWN_IN_PORTALS) && world.getGameRules().getBoolean(GameRules.DO_MOB_SPAWNING)) {
             if (random.nextInt(world.getGameRules().getInt(PiglessPortals.PIGMEN_SPAWN_DELAY)) == 0) {
                 while (world.getBlockState(pos).isOf(Blocks.NETHER_PORTAL)) {

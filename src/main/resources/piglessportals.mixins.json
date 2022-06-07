@@ -4,7 +4,7 @@
   "package": "com.gmail.sneakdevs.mixin",
   "compatibilityLevel": "JAVA_16",
   "mixins": [
-    "PiglessPortalsMixin"
+    "NetherPortalBlockMixin"
   ],
   "client": [
   ],
